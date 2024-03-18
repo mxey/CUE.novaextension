@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="cue">
+    <meta>
+        <name>CUE</name>
+        <type>script</type>
+        <preferred-file-extension>cue</preferred-file-extension>
+    </meta>
+
+    <detectors>
+        <extension priority="1.0">cue</extension>
+    </detectors>
+
+    <indentation>
+        <increase>
+            <expression>[\{\[]</expression>
+        </increase>
+        <decrease>
+            <expression>[\}\]]</expression>
+        </decrease>
+    </indentation>
+
+    <comments>
+        <single>
+        <expression>//</expression>
+    </single>
+    <multiline>
+        <starts-with>
+            <expression></expression>
+        </starts-with>
+        <ends-with>
+            <expression></expression>
+        </ends-with>
+    </multiline>
+    </comments>
+
+    <tree-sitter language="cue">
+        <highlights path="highlights.scm" />
+        <folds path="folds.scm" />
+        <symbols path="symbols.scm" />
+    </tree-sitter>
+</syntax>

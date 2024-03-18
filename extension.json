@@ -1,0 +1,31 @@
+{
+    "identifier": "net.mxey.CUE",
+    "name": "CUE",
+    "organization": "Maximilian Gaß",
+    "license": "MIT",
+    "description": "CUE language support",
+    "version": "0.1",
+    "categories": ["languages", "formatters"],
+    "entitlements": {
+        "process": true
+    },
+    "main": "main.js",
+    "config": [
+        {
+            "key": "cue.language-server-path",
+            "title": "Language Server Path",
+            "type": "path",
+            "placeholder": "/opt/homebrew/bin/cuepls"
+        },
+        {
+            "key": "cue.path",
+            "title": "CUE Path",
+            "type": "path",
+            "placeholder": "/opt/homebrew/bin/cue"
+        }
+    ],
+    "activationEvents": [
+        "onLanguage:cue",
+        "onWorkspaceContains:cue.mod"
+    ]
+}

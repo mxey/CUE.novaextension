@@ -1,0 +1,3 @@
+[submodule "tree-sitter-cue"]
+	path = tree-sitter-cue
+	url = https://github.com/eonpatapon/tree-sitter-cue.git
