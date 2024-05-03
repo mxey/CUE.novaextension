@@ -6,6 +6,8 @@ This extension provides support for [CUE](https://cuelang.org), including:
 * basic symbol support (in file)
 * automatically running `cue fmt` when saving file
 
+![](https://raw.githubusercontent.com/mxey/CUE.novaextension/main/Screenshot.png)
+
 ## Requirements
 
 CUE has to be installed, including the `cuepls` executable for the language server.
