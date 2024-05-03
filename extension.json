@@ -9,6 +9,9 @@
     "entitlements": {
         "process": true
     },
+    "homepage": "https://github.com/mxey/CUE.novaextension",
+    "repository": "https://github.com/mxey/CUE.novaextension",
+    "bugs": "https://github.com/mxey/CUE.novaextension/issues",
     "main": "main.js",
     "config": [
         {
