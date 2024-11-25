@@ -18,13 +18,17 @@ exports.activate = function() {
             // We could send the request to the language server ourselves,
             // but shelling out to cue fmt is easier than handling the LSP response
             // for text changes.
-            let path = nova.config.get('cue.path');
-            if (!path) {
-                path = '/opt/homebrew/bin/cue';
-            }
-            await pipeEditorThroughProcess(editor, path, ['fmt', '-']);
+            await pipeEditorThroughProcess(editor, cueBinaryPath(), ['fmt', '-']);
         });
     });
+}
+
+function cueBinaryPath() {
+    let path = nova.config.get('cue.path');
+    if (!path) {
+        path = '/opt/homebrew/bin/cue';
+    }
+    return path;
 }
 
 async function pipeEditorThroughProcess(editor, cmd, args) {
@@ -80,8 +84,8 @@ exports.deactivate = function() {
 class CUELanguageServer {
     constructor() {
         // Observe the configuration setting for the server's location, and restart the server on change
-        nova.config.observe('cue.language-server-path', function(path) {
-            this.start(path);
+        nova.config.observe('cue.path', function(path) {
+            this.start(cueBinaryPath());
         }, this);
     }
 
@@ -95,25 +99,22 @@ class CUELanguageServer {
             nova.subscriptions.remove(this.languageClient);
         }
 
-        if (!path) {
-            path = '/opt/homebrew/bin/cuepls';
-        }
-
         var serverOptions = {
             path: path,
+            args: ['lsp'],
         };
         var clientOptions = {
             syntaxes: ['cue'],
             debug: nova.inDevMode(),
         };
-        var client = new LanguageClient('cuepls', 'CUE Language Server', serverOptions, clientOptions);
+        var client = new LanguageClient('cue-lsp', 'CUE Language Server', serverOptions, clientOptions);
 
         client.onDidStop(function(err) {
             if (!err) {
                 return;
             }
 
-            let request = new NotificationRequest('cuepls-error');
+            let request = new NotificationRequest('cue-lsp-error');
             request.body = `language server ${path} failed: ${err}`;
             nova.notifications.add(request);
         });

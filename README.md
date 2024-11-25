@@ -10,7 +10,8 @@ This extension provides support for [CUE](https://cuelang.org), including:
 
 ## Requirements
 
-CUE has to be installed, including the `cuepls` executable for the language server.
+CUE has to be installed.
+It must be >= v0.11.0 for `cue lsp` to work.
 
 ## Acknowledgments
 

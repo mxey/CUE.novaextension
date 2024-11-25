@@ -4,7 +4,7 @@
     "organization": "Maximilian Gaß",
     "license": "MIT",
     "description": "CUE language support",
-    "version": "0.1",
+    "version": "0.2",
     "categories": ["languages", "formatters"],
     "entitlements": {
         "process": true
@@ -14,12 +14,6 @@
     "bugs": "https://github.com/mxey/CUE.novaextension/issues",
     "main": "main.js",
     "config": [
-        {
-            "key": "cue.language-server-path",
-            "title": "Language Server Path",
-            "type": "path",
-            "placeholder": "/opt/homebrew/bin/cuepls"
-        },
         {
             "key": "cue.path",
             "title": "CUE Path",
